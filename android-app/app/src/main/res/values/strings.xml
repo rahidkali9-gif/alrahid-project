@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Al Rahid</string>
+
+    <!-- Auth -->
+    <string name="login_subtitle">Sign in to your account</string>
+    <string name="register_subtitle">Create a new account</string>
+    <string name="hint_name">Full name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm password</string>
+    <string name="hint_type_message">Type a message</string>
+    <string name="hint_prompt">Describe what you want to generate…</string>
+    <string name="hint_paste_text">Paste the text you want to summarize…</string>
+    <string name="action_login">Login</string>
+    <string name="action_register">Register</string>
+    <string name="action_send">Send</string>
+    <string name="action_generate">Generate</string>
+    <string name="action_summarize">Summarize</string>
+    <string name="action_save">Save</string>
+    <string name="action_change_password">Change password</string>
+    <string name="action_mark_all_read">Mark all as read</string>
+    <string name="action_logout">Logout</string>
+    <string name="no_account_register">Don\'t have an account? Register</string>
+    <string name="have_account_login">Already have an account? Login</string>
+    <string name="welcome">Welcome</string>
+    <string name="guest_user">Guest user</string>
+
+    <!-- Drawer sections -->
+    <string name="nav_section_ai">AI Tools</string>
+    <string name="nav_section_account">Account</string>
+
+    <!-- Drawer items -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_wallet">Wallet</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_history">History</string>
+
+    <!-- AI feature labels -->
+    <string name="ai_features">AI Features</string>
+    <string name="ai_chat">AI Chat</string>
+    <string name="ai_image">AI Image</string>
+    <string name="ai_video">AI Video</string>
+    <string name="ai_voice">AI Voice</string>
+    <string name="ai_music">AI Music</string>
+    <string name="ai_logo">AI Logo</string>
+    <string name="ai_resume">AI Resume</string>
+    <string name="ai_present">AI Presentation</string>
+    <string name="ai_pdf">AI PDF Summary</string>
+    <string name="ai_code">AI Code</string>
+    <string name="ai_website">AI Website</string>
+    <string name="ai_app">AI App</string>
+    <string name="ai_email">AI Email</string>
+    <string name="ai_document">AI Document</string>
+    <string name="ai_history">AI History</string>
+
+    <!-- Wallet -->
+    <string name="wallet_balance">Wallet balance</string>
+    <string name="transactions">Transactions</string>
+    <string name="no_transactions">No transactions yet</string>
+
+    <!-- Notifications -->
+    <string name="no_notifications">No notifications</string>
+
+    <!-- History -->
+    <string name="no_history">No activity yet</string>
+
+    <!-- AI generations -->
+    <string name="no_generations">No AI generations yet</string>
+
+    <!-- Profile -->
+    <string name="profile_info">Profile information</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="clear_cache">Clear local cache</string>
+    <string name="api_base_url_label">API base URL</string>
+    <string name="api_base_url_hint">Configured in Constants.kt / app/build.gradle.kts. Change the value and rebuild to switch servers.</string>
+
+    <!-- PDF summary -->
+    <string name="pdf_summary_hint">Paste any long text to get a concise summary.</string>
+</resources>

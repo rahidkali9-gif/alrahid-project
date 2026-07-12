@@ -1,0 +1,35 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- A stylized "A" mark for the Al Rahid launcher icon.
+         Drawn on a 108x108 artboard; the adaptive-icon safe zone is the
+         central ~66x66, so the glyph occupies roughly x=24..84, y=30..82. -->
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M33.0,82.0
+            L50.4,33.0
+            Q50.9,31.5 52.5,31.5
+            Q54.1,31.5 54.6,33.0
+            L72.0,82.0
+            Q72.9,84.5 71.4,86.2
+            Q69.9,88.0 67.2,88.0
+            L60.0,88.0
+            Q57.3,88.0 55.9,86.7
+            Q54.5,85.5 53.7,83.6
+            L50.1,74.0
+            L29.7,74.0
+            L26.2,83.6
+            Q25.5,85.5 24.1,86.7
+            Q22.7,88.0 20.0,88.0
+            L13.5,88.0
+            Q10.8,88.0 9.4,86.2
+            Q7.9,84.5 8.8,82.0
+            Z
+            M35.4,64.0
+            L44.4,64.0
+            L40.0,51.0
+            L35.4,64.0 Z" />
+</vector>

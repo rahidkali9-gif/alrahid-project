@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme — Material 3, DayNight, no action bar
+         (we provide our own MaterialToolbar). Teal brand colour. -->
+    <style name="Theme.AlRahid" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/teal_primary</item>
+        <item name="colorOnPrimary">@color/teal_on_primary</item>
+        <item name="colorPrimaryContainer">@color/teal_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/teal_on_primary_container</item>
+
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/on_surface_light</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant_light</item>
+
+        <item name="colorError">@color/error_red</item>
+        <item name="colorOnError">@color/on_error</item>
+        <item name="colorErrorContainer">@color/error_container</item>
+
+        <item name="android:statusBarColor">@color/teal_primary_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="materialButtonStyle">@style/Widget.AlRahid.Button</item>
+    </style>
+
+    <!-- Dark theme overrides via DayNight auto-switching are handled by
+         values-night/colors; but we also keep the theme single so the
+         Material3 DayNight parent flips automatically. -->
+
+    <style name="Widget.AlRahid.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <!-- Reusable settings row -->
+    <style name="SettingsRow">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+</resources>

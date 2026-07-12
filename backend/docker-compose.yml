@@ -1,0 +1,105 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: alrahid-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-alrahid}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-alrahid_secret}
+      POSTGRES_DB: ${DB_NAME:-alrahid}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - alrahid_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-alrahid} -d ${DB_NAME:-alrahid}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    container_name: alrahid-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: 3000
+      HOST: 0.0.0.0
+      APP_NAME: ${APP_NAME:-Al Rahid}
+      APP_URL: ${APP_URL:-http://localhost:3000}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-15m}
+      JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN:-7d}
+      BCRYPT_SALT_ROUNDS: ${BCRYPT_SALT_ROUNDS:-10}
+      API_KEY_PREFIX: ${API_KEY_PREFIX:-arh_live_}
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-alrahid}
+      DB_USER: ${DB_USER:-alrahid}
+      DB_PASSWORD: ${DB_PASSWORD:-alrahid_secret}
+      DB_SSL: "false"
+      RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-900000}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-300}
+      AUTH_RATE_LIMIT_WINDOW_MS: ${AUTH_RATE_LIMIT_WINDOW_MS:-900000}
+      AUTH_RATE_LIMIT_MAX: ${AUTH_RATE_LIMIT_MAX:-10}
+      UPLOAD_DIR: uploads
+      MAX_FILE_SIZE_MB: ${MAX_FILE_SIZE_MB:-25}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_DIR: logs
+      AI_PROVIDER: ${AI_PROVIDER:-openai}
+      AI_API_BASE_URL: ${AI_API_BASE_URL}
+      AI_API_KEY: ${AI_API_KEY}
+      AI_DEFAULT_MODEL: ${AI_DEFAULT_MODEL}
+      AI_IMAGE_MODEL: ${AI_IMAGE_MODEL}
+      AI_TEMPERATURE: ${AI_TEMPERATURE:-0.7}
+      AI_MAX_TOKENS: ${AI_MAX_TOKENS:-2000}
+      OPENROUTER_API_BASE_URL: ${OPENROUTER_API_BASE_URL}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_DEFAULT_MODEL: ${OPENROUTER_DEFAULT_MODEL}
+      GROQ_API_BASE_URL: ${GROQ_API_BASE_URL}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_DEFAULT_MODEL: ${GROQ_DEFAULT_MODEL}
+      OLLAMA_API_BASE_URL: ${OLLAMA_API_BASE_URL}
+      OLLAMA_API_KEY: ${OLLAMA_API_KEY}
+      OLLAMA_DEFAULT_MODEL: ${OLLAMA_DEFAULT_MODEL}
+      AI_CHAT_COST: ${AI_CHAT_COST:-10}
+      AI_IMAGE_COST: ${AI_IMAGE_COST:-50}
+      AI_VIDEO_COST: ${AI_VIDEO_COST:-200}
+      AI_VOICE_COST: ${AI_VOICE_COST:-80}
+      AI_MUSIC_COST: ${AI_MUSIC_COST:-120}
+      AI_LOGO_COST: ${AI_LOGO_COST:-60}
+      AI_RESUME_COST: ${AI_RESUME_COST:-40}
+      AI_PRESENTATION_COST: ${AI_PRESENTATION_COST:-90}
+      AI_PDF_SUMMARY_COST: ${AI_PDF_SUMMARY_COST:-30}
+      AI_CODE_COST: ${AI_CODE_COST:-20}
+      AI_WEBSITE_COST: ${AI_WEBSITE_COST:-100}
+      AI_APP_COST: ${AI_APP_COST:-150}
+      AI_EMAIL_COST: ${AI_EMAIL_COST:-15}
+      AI_DOCUMENT_COST: ${AI_DOCUMENT_COST:-25}
+      DEFAULT_ADMIN_EMAIL: ${DEFAULT_ADMIN_EMAIL:-admin@alrahid.com}
+      DEFAULT_ADMIN_PASSWORD: ${DEFAULT_ADMIN_PASSWORD:-Admin@123456}
+      DEFAULT_DEMO_EMAIL: ${DEFAULT_DEMO_EMAIL:-demo@alrahid.com}
+      DEFAULT_DEMO_PASSWORD: ${DEFAULT_DEMO_PASSWORD:-Demo@123456}
+    ports:
+      - "${PORT:-3000}:3000"
+    volumes:
+      - alrahid_uploads:/app/uploads
+      - alrahid_logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  alrahid_pgdata:
+  alrahid_uploads:
+  alrahid_logs:

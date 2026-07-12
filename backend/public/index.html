@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Rahid — Backend</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #0b1020;
+      --card: #131a2e;
+      --text: #e6edf7;
+      --muted: #94a3b8;
+      --ok: #10b981;
+      --err: #ef4444;
+      --border: #1f2a44;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(1200px 800px at 20% -10%, #10213b 0%, var(--bg) 60%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 640px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+    .logo {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: white; font-size: 22px;
+      margin-bottom: 18px;
+    }
+    h1 { margin: 0 0 6px; font-size: 26px; }
+    p.subtitle { margin: 0 0 22px; color: var(--muted); }
+    .status {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px; border-radius: 10px;
+      background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25);
+      margin-bottom: 16px;
+    }
+    .status.err {
+      background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); }
+    .dot.err { background: var(--err); box-shadow: 0 0 10px var(--err); }
+    .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .meta .item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .meta .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .meta .value { font-size: 15px; margin-top: 4px; font-weight: 600; }
+    .links { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+    a.btn {
+      text-decoration: none; color: white;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 10px 16px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    }
+    a.btn.secondary { background: rgba(255,255,255,0.06); border: 1px solid var(--border); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">AR</div>
+    <h1>Al Rahid Backend</h1>
+    <p class="subtitle">Node.js &middot; Express &middot; PostgreSQL &middot; AI-ready</p>
+
+    <div id="status" class="status">
+      <span id="dot" class="dot"></span>
+      <span id="statusText">Checking health…</span>
+    </div>
+
+    <div class="meta">
+      <div class="item"><div class="label">Service</div><div class="value" id="m-service">—</div></div>
+      <div class="item"><div class="label">Environment</div><div class="value" id="m-env">—</div></div>
+      <div class="item"><div class="label">Database</div><div class="value" id="m-db">—</div></div>
+      <div class="item"><div class="label">Uptime</div><div class="value" id="m-up">—</div></div>
+    </div>
+
+    <div class="links">
+      <a class="btn" href="/api">API Index</a>
+      <a class="btn secondary" href="/api/info">Public Info</a>
+      <a class="btn secondary" href="/health">Health JSON</a>
+    </div>
+  </div>
+
+  <script>
+    async function check() {
+      try {
+        const res = await fetch('/health');
+        const json = await res.json();
+        const d = json.data || {};
+        const ok = d.status === 'ok';
+        const dot = document.getElementById('dot');
+        const text = document.getElementById('statusText');
+        const box = document.getElementById('status');
+        if (ok) {
+          text.textContent = 'Backend is running';
+          dot.classList.remove('err');
+          box.classList.remove('err');
+        } else {
+          text.textContent = 'Backend unhealthy';
+          dot.classList.add('err');
+          box.classList.add('err');
+        }
+        document.getElementById('m-service').textContent = d.service || '—';
+        document.getElementById('m-env').textContent = d.env || '—';
+        document.getElementById('m-db').textContent = d.db || '—';
+        document.getElementById('m-up').textContent = d.uptime != null ? d.uptime + 's' : '—';
+      } catch (e) {
+        const text = document.getElementById('statusText');
+        const dot = document.getElementById('dot');
+        const box = document.getElementById('status');
+        text.textContent = 'Cannot reach backend';
+        dot.classList.add('err');
+        box.classList.add('err');
+      }
+    }
+    check();
+    setInterval(check, 10000);
+  </script>
+</body>
+</html>

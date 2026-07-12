@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand teal (Material 3 primary). NO purple anywhere. -->
+    <color name="teal_primary">#0d9488</color>
+    <color name="teal_primary_dark">#0f766e</color>
+    <color name="teal_primary_light">#5eead4</color>
+    <color name="teal_on_primary">#ffffff</color>
+    <color name="teal_primary_container">#ccfbf1</color>
+    <color name="teal_on_primary_container">#0f766e</color>
+
+    <!-- Secondary (amber accent for highlights) -->
+    <color name="secondary">#f59e0b</color>
+    <color name="secondary_dark">#b45309</color>
+    <color name="on_secondary">#ffffff</color>
+
+    <!-- Surfaces -->
+    <color name="background_light">#f8fafc</color>
+    <color name="surface_light">#ffffff</color>
+    <color name="background_dark">#0f172a</color>
+    <color name="surface_dark">#1e293b</color>
+    <color name="on_surface_light">#0f172a</color>
+    <color name="on_surface_dark">#e2e8f0</color>
+    <color name="on_surface_variant_light">#475569</color>
+    <color name="on_surface_variant_dark">#94a3b8</color>
+
+    <!-- Outline -->
+    <color name="outline_light">#cbd5e1</color>
+    <color name="outline_dark">#334155</color>
+
+    <!-- Error -->
+    <color name="error_red">#dc2626</color>
+    <color name="error_container">#fee2e2</color>
+    <color name="on_error">#ffffff</color>
+
+    <!-- Semantic -->
+    <color name="credit_green">#16a34a</color>
+    <color name="debit_red">#dc2626</color>
+
+    <!-- Misc UI -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="chip_bg">#0d9488</color>
+    <color name="bubble_bot">#e2e8f0</color>
+    <color name="bubble_user">#0d9488</color>
+    <color name="launcher_bg">#0d9488</color>
+</resources>

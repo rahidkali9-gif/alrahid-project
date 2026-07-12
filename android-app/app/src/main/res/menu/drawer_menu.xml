@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/nav_dashboard" />
+
+    <item android:title="@string/nav_section_ai">
+        <menu>
+            <item
+                android:id="@+id/nav_ai_chat"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_chat" />
+            <item
+                android:id="@+id/nav_ai_image"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_image" />
+            <item
+                android:id="@+id/nav_ai_video"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_video" />
+            <item
+                android:id="@+id/nav_ai_voice"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_voice" />
+            <item
+                android:id="@+id/nav_ai_music"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_music" />
+            <item
+                android:id="@+id/nav_ai_logo"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_logo" />
+            <item
+                android:id="@+id/nav_ai_resume"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_resume" />
+            <item
+                android:id="@+id/nav_ai_presentation"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_present" />
+            <item
+                android:id="@+id/nav_ai_pdf"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_pdf" />
+            <item
+                android:id="@+id/nav_ai_code"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_code" />
+            <item
+                android:id="@+id/nav_ai_website"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_website" />
+            <item
+                android:id="@+id/nav_ai_app"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_app" />
+            <item
+                android:id="@+id/nav_ai_email"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_email" />
+            <item
+                android:id="@+id/nav_ai_document"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_document" />
+            <item
+                android:id="@+id/nav_ai_history"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/ai_history" />
+        </menu>
+    </item>
+
+    <item android:title="@string/nav_section_account">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_profile"
+                android:title="@string/nav_profile" />
+            <item
+                android:id="@+id/nav_wallet"
+                android:icon="@drawable/ic_wallet"
+                android:title="@string/nav_wallet" />
+            <item
+                android:id="@+id/nav_notifications"
+                android:icon="@drawable/ic_notifications"
+                android:title="@string/nav_notifications" />
+            <item
+                android:id="@+id/nav_history"
+                android:icon="@drawable/ic_ai"
+                android:title="@string/nav_history" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/nav_settings" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/action_logout" />
+        </menu>
+    </item>
+
+</menu>
