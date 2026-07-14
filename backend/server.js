@@ -20,15 +20,22 @@ const HOST = config.app.host;
 async function start() {
   // Ping DB — warn but do not crash
   try {
-    const ok = await db.ping();
-    if (ok) {
-      logger.info('Database connection OK', { host: config.db.host, db: config.db.database });
-    } else {
-      logger.warn('Database ping returned false — starting anyway');
-    }
-  } catch (e) {
-    logger.warn('Database unreachable on boot — starting anyway', { error: e.message });
+  const ok = await db.ping();
+  if (ok) {
+    logger.info('Database connection OK', {
+      host: config.db.host,
+      db: config.db.database,
+    });
+  } else {
+    logger.warn('Database ping returned false — starting anyway');
   }
+} catch (e) {
+  logger.error('Database unreachable on boot', {
+    error: e.message,
+    code: e.code,
+    stack: e.stack,
+  });
+}
 
   server.listen(PORT, HOST, () => {
     logger.info(`${config.app.name} server listening`, {
