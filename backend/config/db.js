@@ -21,7 +21,7 @@ const config = {
   database: process.env.DB_NAME || 'alrahid',
   user: process.env.DB_USER || 'alrahid',
   password: process.env.DB_PASSWORD || 'alrahid_secret',
-  ssl: true,
+  ssl: { rejectUnauthorized: false },
   pool: {
     min: toInt(process.env.DB_POOL_MIN, 2),
     max: toInt(process.env.DB_POOL_MAX, 10),
