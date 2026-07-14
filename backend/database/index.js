@@ -82,8 +82,18 @@ async function transaction(cb) {
  * Test connectivity.
  */
 async function ping() {
-  const r = await pool.query('SELECT 1 AS ok');
-  return r.rows && r.rows[0] && r.rows[0].ok === 1;
+  try {
+    const r = await pool.query('SELECT NOW()');
+    return true;
+  } catch (err) {
+    logger.error('DB Ping Failed', {
+      message: err.message,
+      code: err.code,
+      detail: err.detail,
+      stack: err.stack,
+    });
+    throw err;
+  }
 }
 
 /**
