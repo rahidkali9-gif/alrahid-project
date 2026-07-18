@@ -18,7 +18,7 @@ android {
 
         // THE one config value that decides which backend server the app talks to.
         // To point the app at a different server, change ONLY this URL and rebuild.
-        buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:3000/api/\"")
+        buildConfigField("String", "API_BASE_URL", "\"https://rahid-server.onrender.com/api/\"")
     }
 
     buildTypes {
